@@ -7,10 +7,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
-/**
- * Created by Alex Zavalnyi on 21.12.2016.
+/** Класс работы с таблице Users в базе данных
+ * @autor Zavalny Alexander
+ * @version 1.0
  */
-
 @Repository
 public class UserDaoImpl implements UserDao {
 
