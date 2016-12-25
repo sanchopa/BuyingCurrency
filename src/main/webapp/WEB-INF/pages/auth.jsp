@@ -11,12 +11,8 @@
   <form method="post" action="/currency_exchange">
   <h1>Enter currency exchange</h1>
     <p>
-      <label for="login">Login:</label>
-      <input type="text" name="login" id="login" value="Ivan">
-    </p>
-    <p>
-      <label for="password">Password:</label>
-      <input type="text" name="password" id="password" value="0000">
+      <label for="name">Login:</label>
+      <input type="text" name="name" id="name" value="Ivan">
     </p>
     <p class="login-submit">
       <button type="submit" class="login-button">Enter</button>

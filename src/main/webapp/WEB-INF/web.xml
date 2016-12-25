@@ -11,6 +11,8 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
+
+
 	<servlet-mapping>
 		<servlet-name>mvc-dispatcher</servlet-name>
 		<url-pattern>/</url-pattern>
@@ -18,7 +20,7 @@
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/mvc-dispatcher-servlet.xml</param-value>
+		<param-value>WEB-INF/mvc-dispatcher-servlet.xml</param-value>
 	</context-param>
 
 	<listener>

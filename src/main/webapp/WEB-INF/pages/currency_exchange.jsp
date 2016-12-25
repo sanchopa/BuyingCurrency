@@ -9,6 +9,6 @@
 </head>
 <body>
   <h1>Currency exchange</h1>
-  <h1>Welcome: ${login}</h1>
+  <h1>Welcome: ${name}</h1>
 </body>
 </html>
