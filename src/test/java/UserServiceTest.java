@@ -1,4 +1,5 @@
 import com.luxoft.buying_currency.model.user.User;
+import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -7,10 +8,13 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.luxoft.buying_currency.service.UserService;
 
-/**
- * Created by Alex Zavalnyi on 21.12.2016.
+/** Класс-тест для темтирования @see UserServiceImpl
+ * @autor Zavalny Alexander
+ * @version 1.0
  */
 public class UserServiceTest extends Assert {
+    private static final Logger log = Logger.getLogger(UserServiceTest.class);
+
     final static String USER1_NAME = "Ivan";
     final static String USER2_NAME = "Alex";
     final static String USER3_NAME = "Lololol";
@@ -51,6 +55,7 @@ public class UserServiceTest extends Assert {
 
     @Test
     public void testGet() {
+        log.info("Testing obtain user base.");
         assertEquals(user1.getName(),service.getUser(USER1_NAME).getName());
         assertEquals(null,service.getUser("noname"));
     }
