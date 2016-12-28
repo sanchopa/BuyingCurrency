@@ -1,4 +1,4 @@
-import com.luxoft.buying_currency.service.PropertiesService;
+import com.luxoft.buying_currency.service.PropertiesServiceImpl;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
@@ -11,7 +11,7 @@ public class PropertiesServiceTest {
     private static final Logger log = Logger.getLogger(UserServiceTest.class);
     @Test
     public void testGetProperties() {
-        PropertiesService propServ = new PropertiesService();
+        PropertiesServiceImpl propServ = new PropertiesServiceImpl();
         Properties property = propServ.getProperty("src/main/resources/defaultUser.properties");
         log.info(property.getProperty("MMM1"));
 

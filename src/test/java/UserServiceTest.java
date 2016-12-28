@@ -42,15 +42,19 @@ public class UserServiceTest extends Assert {
         service = (UserService) context.getBean("userService");
     }
 
-    @Before
-    public void addUser() {
-        newUser();
-        getService();
 
+    public void addUser() {
         service.addUser(user1);
         service.addUser(user2);
         service.addUser(user3);
         service.addUser(user4);
+    }
+
+    @Before
+    public void dataPreparation() {
+        newUser();
+        getService();
+        addUser();
     }
 
     @Test

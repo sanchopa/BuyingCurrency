@@ -22,7 +22,6 @@ public class UserServiceImpl implements UserService {
         dao.add(user);
     }
 
-
     public User getUser(String name) {
         return dao.get(name);
     }

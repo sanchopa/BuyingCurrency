@@ -1,6 +1,6 @@
 package com.luxoft.buying_currency.controller;
 
-import com.luxoft.buying_currency.service.AuthService;
+import com.luxoft.buying_currency.service.AuthServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +26,8 @@ public class AuthController {
 	 */
 	@RequestMapping(value = "/currency_exchange", method = RequestMethod.POST)
 	public String authSubmit(@RequestParam String name, Model model) {
-		AuthService.auth(name);
+		AuthServiceImpl authService = new AuthServiceImpl();
+		authService.auth(name);
 		model.addAttribute("name", name);
 		return "currency_exchange";
 	}
