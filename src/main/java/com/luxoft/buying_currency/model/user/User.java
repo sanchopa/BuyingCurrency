@@ -14,9 +14,38 @@ public class User {
     @Id
     @GeneratedValue
     private Long id;
-
     @Column
     private String name;
+    @Column
+    private String balanceRUB;
+    @Column
+    private String balanceUSD;
+    @Column
+    private String balanceEUR;
+
+    public String getBalanceRUB() {
+        return balanceRUB;
+    }
+
+    public void setBalanceRUB(String balanceRUB) {
+        this.balanceRUB = balanceRUB;
+    }
+
+    public String getBalanceUSD() {
+        return balanceUSD;
+    }
+
+    public void setBalanceUSD(String balanceUSD) {
+        this.balanceUSD = balanceUSD;
+    }
+
+    public String getBalanceEUR() {
+        return balanceEUR;
+    }
+
+    public void setBalanceEUR(String balancrEUR) {
+        this.balanceEUR = balancrEUR;
+    }
 
     public Long getId() {
         return id;

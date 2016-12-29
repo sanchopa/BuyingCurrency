@@ -13,7 +13,7 @@ public class AuthServiceImpl implements AuthService {
 
     private static final Logger log = Logger.getLogger(AuthServiceImpl.class);
 
-    /** Самы главный метод авторизации
+    /** Метод авторизации
      */
     public void auth(String name) {
         ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/orm-context.xml");
@@ -21,6 +21,10 @@ public class AuthServiceImpl implements AuthService {
         if(service.getUser(name)==null) {
             User newUser = new User();
             newUser.setName(name);
+            PropertiesServiceImpl propService = new PropertiesServiceImpl();
+            newUser.setBalanceRUB(propService.getDefaultBalanceRUB());
+            newUser.setBalanceUSD(propService.getDefaultBalanceUSD());
+            newUser.setBalanceEUR(propService.getDefaultBalanceEUR());
             service.addUser(newUser);
             log.info("Создан новый пользователь");
         }
