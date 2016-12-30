@@ -1,6 +1,7 @@
 package com.luxoft.buying_currency.service;
 
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Service;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -10,6 +11,7 @@ import java.util.Properties;
 /**
  * Created by User on 25.12.2016.
  */
+@Service("propertiesService")
 public class PropertiesServiceImpl implements PropertiesService {
     private static final Logger log = Logger.getLogger(PropertiesServiceImpl.class);
 

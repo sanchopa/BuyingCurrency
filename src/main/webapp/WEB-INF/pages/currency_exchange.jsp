@@ -12,7 +12,8 @@
     <h1>Currency exchange</h1>
     <h1>Welcome: ${name}</h1>
     <form method="get" action="logout">
-        <button >Logout</button>
-        </form>
+        <button>Logout</button>
+    </form>
+
 </body>
 </html>

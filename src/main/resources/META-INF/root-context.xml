@@ -42,4 +42,6 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="jpaDialect" ref="jpaDialect"/>
     </bean>
+
+    <!--<bean id="authService" class="com.luxoft.buying_currency.service.AuthService"></bean>-->
 </beans>

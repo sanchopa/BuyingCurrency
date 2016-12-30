@@ -1,6 +1,10 @@
 package com.luxoft.buying_currency.controller;
 
+import com.luxoft.buying_currency.service.AuthService;
 import com.luxoft.buying_currency.service.AuthServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 public class AuthController {
+//	@Autowired
+//	private AuthService authService;
+
+
 	/** Метод для отображения страницы авторизации
 	 * @return Возвращает страницу auth.jsp
 	 */
@@ -26,7 +34,8 @@ public class AuthController {
 	 */
 	@RequestMapping(value = "/currency_exchange", method = RequestMethod.POST)
 	public String authSubmit(@RequestParam String name, Model model) {
-		AuthServiceImpl authService = new AuthServiceImpl();
+		ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/root-context.xml");
+		AuthService authService =  context.getBean(AuthService.class);
 		authService.auth(name);
 		model.addAttribute("name", name);
 		return "currency_exchange";
