@@ -14,6 +14,8 @@
     <form method="get" action="logout">
         <button>Logout</button>
     </form>
-
+<p>Balance RUB: ${balanceRUB}</p>
+<p>Balance USD: ${balanceUSD}</p>
+<p>Balance EUR: ${balanceEUR}</p>
 </body>
 </html>
