@@ -26,8 +26,7 @@ public class AuthServiceImpl implements AuthService {
     public User auth(String name) {
         User user = userService.getUser(name);
         if (user == null) {
-            User newUser = new User();
-            newUser.setName(name);
+            User newUser = new User(name);
             newUser.setBalanceRUB(propService.getDefaultBalanceRUB());
             newUser.setBalanceUSD(propService.getDefaultBalanceUSD());
             newUser.setBalanceEUR(propService.getDefaultBalanceEUR());

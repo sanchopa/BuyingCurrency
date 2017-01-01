@@ -1,8 +1,6 @@
-package com.luxoft.buying_currency.controller;
+package com.luxoft.buying_currency.controllerUI;
 
 import com.luxoft.buying_currency.service.AuthService;
-import com.luxoft.buying_currency.service.AuthServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;

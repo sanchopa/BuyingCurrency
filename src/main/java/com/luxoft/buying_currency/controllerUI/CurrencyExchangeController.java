@@ -1,4 +1,4 @@
-package com.luxoft.buying_currency.controller;
+package com.luxoft.buying_currency.controllerUI;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;

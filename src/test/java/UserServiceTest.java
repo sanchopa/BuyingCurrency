@@ -15,25 +15,15 @@ public class UserServiceTest extends Assert {
     private static final Logger log = Logger.getLogger(UserServiceTest.class);
 
     final static String USER1_NAME = "Ivan";
-
     User user1;
     UserService service;
 
-    public void newUser() {
-        user1 = new User();
-        user1.setName(USER1_NAME);
-    }
-
-    public void addUser() {
+    @Before
+    public void dataPreparation() {
+        user1 = new User(USER1_NAME);
         ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/root-context.xml");
         service = (UserService) context.getBean("userService");
         service.addUser(user1);
-    }
-
-    @Before
-    public void dataPreparation() {
-        newUser();
-        addUser();
     }
 
     @Test

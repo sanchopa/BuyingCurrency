@@ -13,8 +13,8 @@ import javax.persistence.Id;
 public class User {
     @Id
     @GeneratedValue
-    private Long id;
-    @Column
+    private Long userID;
+    @Column (unique = true)
     private String name;
     @Column
     private String balanceRUB;
@@ -22,6 +22,14 @@ public class User {
     private String balanceUSD;
     @Column
     private String balanceEUR;
+
+    public User() {
+
+    }
+
+    public User(String name) {
+        this.name = name;
+    }
 
     public String getBalanceRUB() {
         return balanceRUB;
@@ -47,12 +55,12 @@ public class User {
         this.balanceEUR = balancrEUR;
     }
 
-    public Long getId() {
-        return id;
+    public Long getUserID() {
+        return userID;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUserID(Long userID) {
+        this.userID = userID;
     }
 
     public String getName() {
