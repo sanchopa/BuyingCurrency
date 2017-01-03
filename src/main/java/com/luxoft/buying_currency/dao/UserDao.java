@@ -1,6 +1,6 @@
 package com.luxoft.buying_currency.dao;
 
-import com.luxoft.buying_currency.model.user.User;
+import com.luxoft.buying_currency.model.User;
 
 /** Интерфейс работы с таблице Users в базе данных
  * @autor Zavalny Alexander

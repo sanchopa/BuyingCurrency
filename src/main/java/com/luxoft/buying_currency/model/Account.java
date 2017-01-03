@@ -1,4 +1,4 @@
-package com.luxoft.buying_currency.model.user;
+package com.luxoft.buying_currency.model;
 
 import javax.persistence.*;
 
@@ -11,8 +11,6 @@ import javax.persistence.*;
 @Entity(name = "account")
 public class Account {
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private User user;
     @Id
     private long accountID;
     @Column
@@ -21,6 +19,8 @@ public class Account {
     private String balanceUSD;
     @Column
     private String balanceEUR;
+    @OneToOne
+    private User user;
 
     public Account(User user, String balanceRUB, String balanceUSD, String balanceEUR) {
         this.user = user;

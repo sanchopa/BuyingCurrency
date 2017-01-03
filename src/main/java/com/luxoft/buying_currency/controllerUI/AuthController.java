@@ -1,7 +1,9 @@
 package com.luxoft.buying_currency.controllerUI;
 
-import com.luxoft.buying_currency.model.user.Account;
-import com.luxoft.buying_currency.service.AuthService;
+import com.luxoft.buying_currency.model.Account;
+import com.luxoft.buying_currency.model.Pair;
+import com.luxoft.buying_currency.service.PairService;
+import com.luxoft.buying_currency.service.auth.AuthService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -33,7 +35,7 @@ public class AuthController {
     }
 
     /**
-     * Метод получает данные при отправке формы входа с страницы auth.jsp
+     * Метод получает данные при отправке формы входа с страницы auth.jsp и отдает данные главной странице
      *
      * @return Возвращает страницу currency_exchange.jsp
      */
@@ -46,6 +48,11 @@ public class AuthController {
         model.addAttribute("balanceRUB", account.getBalanceRUB());
         model.addAttribute("balanceUSD", account.getBalanceUSD());
         model.addAttribute("balanceEUR", account.getBalanceEUR());
+
+        PairService pairService = context.getBean(PairService.class);
+        model.addAttribute("usdrub", pairService.getCoursePair("usdrub"));
+        model.addAttribute("usdeur", pairService.getCoursePair("usdeur"));
+        model.addAttribute("rubeur", pairService.getCoursePair("rubeur"));
         return "currency_exchange";
     }
 }

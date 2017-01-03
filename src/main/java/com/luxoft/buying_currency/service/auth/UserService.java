@@ -1,6 +1,6 @@
-package com.luxoft.buying_currency.service;
+package com.luxoft.buying_currency.service.auth;
 
-import com.luxoft.buying_currency.model.user.User;
+import com.luxoft.buying_currency.model.User;
 
 /**
  * Created by Alex Zavalnyi on 21.12.2016.

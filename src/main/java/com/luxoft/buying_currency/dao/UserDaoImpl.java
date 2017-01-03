@@ -1,8 +1,7 @@
 package com.luxoft.buying_currency.dao;
 
-import com.luxoft.buying_currency.model.user.User;
+import com.luxoft.buying_currency.model.User;
 import org.apache.log4j.Logger;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -17,7 +16,6 @@ public class UserDaoImpl implements UserDao {
 
     private static final Logger log = Logger.getLogger(UserDaoImpl.class);
 
-
     @PersistenceContext
     private EntityManager em;
 
@@ -30,7 +28,7 @@ public class UserDaoImpl implements UserDao {
     public User get(String name) {
         User newUser = null;
         try {
-            newUser = em.createQuery("from users u where u.name=:name", User.class).setParameter("name", name).getSingleResult();
+            newUser = em.createQuery("FROM users u WHERE u.name=:name", User.class).setParameter("name", name).getSingleResult();
         } catch (NoResultException e) {
             newUser = null;
         }

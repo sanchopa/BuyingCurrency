@@ -1,4 +1,4 @@
-package com.luxoft.buying_currency.model.user;
+package com.luxoft.buying_currency.model;
 
 import javax.persistence.*;
 
@@ -8,15 +8,13 @@ import javax.persistence.*;
 
 @Entity(name = "users")
 public class User {
-    @OneToOne(cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
-    private Account account;
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userID;
     @Column(unique = true)
     private String name;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Account account;
 
     public User() {
 

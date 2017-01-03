@@ -1,7 +1,8 @@
-package com.luxoft.buying_currency.service;
+package com.luxoft.buying_currency.service.auth;
 
-import com.luxoft.buying_currency.model.user.Account;
-import com.luxoft.buying_currency.model.user.User;
+import com.luxoft.buying_currency.model.Account;
+import com.luxoft.buying_currency.model.User;
+import com.luxoft.buying_currency.service.PropertiesService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
