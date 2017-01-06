@@ -2,12 +2,10 @@ package com.luxoft.buying_currency.service;
 
 import com.luxoft.buying_currency.dao.PairDao;
 import com.luxoft.buying_currency.model.Pair;
-import com.luxoft.buying_currency.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Random;
 
 /**
  * Created by User on 03.01.2017.
@@ -27,11 +25,6 @@ public class PairServiceImpl implements PairService {
     @Override
     public Pair getPair(String name) {
         return dao.get(name);
-    }
-
-    @Override
-    public String getCoursePair(String name) {
-        return dao.getCourse(name);
     }
 
 //    private static final int MIN_COURSE = 1;

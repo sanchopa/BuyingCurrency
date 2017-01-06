@@ -8,19 +8,55 @@
         <%@include file='css/style.css' %>
     </style>
 </head>
-<body>
+<body class="currency_exchange">
+<div class="header">
     <h1>Currency exchange</h1>
-    <h2>Welcome: ${name}</h2>
+</div>
+<div class="block1">
+    <div class="balance">
+        <h2>Balance</h2>
+        <p>Balance USD: ${balanceUSD}</p>
+        <p>Balance RUB: ${balanceRUB}</p>
+        <p>Balance EUR: ${balanceEUR}</p>
+    </div>
+    <div class="pair">
+        <h2>Pair</h2>
+        <p>USD/RUB: ${usdrub}</p>
+        <p>EUR/RUB: ${eurrub}</p>
+        <p>EUR/USD: ${eurusd}</p>
+    </div>
+    <div class="history">
+        <h2>History operation</h2>
+    </div>
+</div>
+<div class="block2">
+<div class="welcome">
     <form method="get" action="logout">
-        <button>Logout</button>
+        <label for="logout">${name}</label>
+        <button id="logout">Logout</button>
     </form>
-    <h1>Balance</h1>
-<p>Balance RUB: ${balanceRUB}</p>
-<p>Balance USD: ${balanceUSD}</p>
-<p>Balance EUR: ${balanceEUR}</p>
-    <h1>Pair</h1>
-    <p>USD/RUB: ${usdrub}</p>
-    <p>USD/EUR: ${usdeur}</p>
-    <p>RUB/EUR: ${rubeur}</p>
+
+</div>
+<div class="buy">
+    <h2>Buy currency</h2>
+    <form action="buy" method="post">
+        <label for="currency1">Buy currency</label>
+        <p><select id="currency1" name="currency1">
+            <option value=1>USD</option>
+            <option value=2>RUB</option>
+            <option value=3>EUR</option>
+        </select></p>
+        <label for="currency2">for</label>
+        <p><select id="currency2" name="currency2">
+            <option value=1>USD</option>
+            <option value=2>RUB</option>
+            <option value=3>EUR</option>
+        </select></p>
+        <label for="sum">Sum:</label>
+        <input type="text" name="sum" id="sum" value="0">
+        <p><input type="submit" value="Buy"></p>
+    </form>
+</div>
+</div>
 </body>
 </html>

@@ -7,14 +7,12 @@
         <%@include file='css/style.css' %>
     </style>
 </head>
-<body>
+<body class="auth">
   <form method="post" action="/currency_exchange">
-  <h1>Enter currency exchange</h1>
+  <h1>Login for currency exchange</h1>
     <p>
       <label for="name">Login:</label>
       <input type="text" name="name" id="name" value="Ivan">
-    </p>
-    <p class="login-submit">
       <button type="submit" class="login-button">Enter</button>
     </p>
   </form>

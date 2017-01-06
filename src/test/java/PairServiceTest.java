@@ -10,25 +10,24 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class PairServiceTest {
     private static final Logger log = Logger.getLogger(UserServiceTest.class);
+
     @Test
     public void testPair() {
-        Pair usdrub = new Pair("usdrub","15");
-        Pair usdeur = new Pair("usdeur","10");
-        Pair rubeur = new Pair("rubeur","20");
+        Pair usdrub = new Pair("usdrub", 15);
+        Pair eurrub = new Pair("eurrub", 10);
+        Pair eurusd = new Pair("eurusd", 20);
 
         ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/root-context.xml");
         PairService pairService = (PairService) context.getBean("pairService");
         pairService.addPair(usdrub);
-        pairService.addPair(usdeur);
-        pairService.addPair(rubeur);
-
-
+        pairService.addPair(eurrub);
+        pairService.addPair(eurusd);
     }
 
     @Test
     public void setGetCourse() {
         ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/root-context.xml");
-        PairService pairService =  context.getBean(PairService.class);
-        log.info(pairService.getCoursePair("usdrub"));
+        PairService pairService = context.getBean(PairService.class);
+        log.info(pairService.getPair("usdrub").getCourse());
     }
 }

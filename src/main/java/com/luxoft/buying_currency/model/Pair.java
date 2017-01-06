@@ -5,17 +5,17 @@ import javax.persistence.*;
 /**
  * Created by User on 03.01.2017.
  */
-@Entity (name = "pair")
+@Entity(name = "pair")
 public class Pair {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column (unique = true)
+    @Column(unique = true)
     private String name;
     @Column
-    private String course;
+    private double course;
 
-    public Pair(String name, String course) {
+    public Pair(String name, double course) {
         this.name = name;
         this.course = course;
     }
@@ -31,11 +31,11 @@ public class Pair {
         this.id = id;
     }
 
-    public String getCourse() {
+    public double getCourse() {
         return course;
     }
 
-    public void setCourse(String course) {
+    public void setCourse(double course) {
         this.course = course;
     }
 }

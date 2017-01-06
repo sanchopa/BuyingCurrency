@@ -1,16 +1,26 @@
 package com.luxoft.buying_currency.controllerUI;
 
+import com.luxoft.buying_currency.model.User;
+import com.luxoft.buying_currency.service.BuyService;
 import org.apache.log4j.Logger;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
-/** Класс-контроллер для обслуживания главной страницы currency_exchange.jsp
- * @autor Zavalny Alexander
+/**
+ * Класс-контроллер для обслуживания главной страницы currency_exchange.jsp
+ *
  * @version 1.0
+ * @autor Zavalny Alexander
  */
 
 @Controller
+@SessionAttributes(types = User.class)
 public class CurrencyExchangeController {
 
     private static final Logger log = Logger.getLogger(CurrencyExchangeController.class);
@@ -19,6 +29,15 @@ public class CurrencyExchangeController {
     public String logout() {
         log.info("logout");
         return "auth";
+    }
+
+    @RequestMapping(value = "buy", method = RequestMethod.POST)
+    public String buy(@RequestParam int currency1, int currency2, String sum, Model model, User user) {
+        log.info("buy");
+        ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/root-context.xml");
+        BuyService buyService = context.getBean(BuyService.class);
+        buyService.buy(currency1, currency2, sum, user);
+        return "currency_exchange";
     }
 
 }

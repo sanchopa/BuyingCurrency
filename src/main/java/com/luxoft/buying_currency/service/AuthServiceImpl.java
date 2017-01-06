@@ -1,8 +1,7 @@
-package com.luxoft.buying_currency.service.auth;
+package com.luxoft.buying_currency.service;
 
 import com.luxoft.buying_currency.model.Account;
 import com.luxoft.buying_currency.model.User;
-import com.luxoft.buying_currency.service.PropertiesService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +12,7 @@ import org.springframework.stereotype.Service;
  * @version 1.0
  * @autor Zavalny Alexander
  */
-@Service
+@Service("authService")
 public class AuthServiceImpl implements AuthService {
     @Autowired
     PropertiesService propService;
@@ -25,19 +24,17 @@ public class AuthServiceImpl implements AuthService {
     /**
      * Метод авторизации
      */
-    public Account auth(String name) {
-        Account account;
+    public User auth(String name) {
         User user = userService.getUser(name);
         if (user == null) {
             User newUser = new User(name);
-            account = new Account(newUser, propService.getDefaultBalanceRUB(),
-                                            propService.getDefaultBalanceUSD(), propService.getDefaultBalanceEUR());
+            Account account = new Account(newUser, propService.getDefaultBalanceRUB(),
+                    propService.getDefaultBalanceUSD(), propService.getDefaultBalanceEUR());
             newUser.setAccount(account);
             userService.addUser(newUser);
             log.info("Создан новый пользователь");
-        } else {
-            account = user.getAccount();
+            return newUser;
         }
-        return account;
+        return user;
     }
 }

@@ -1,5 +1,6 @@
-package com.luxoft.buying_currency.service.auth;
+package com.luxoft.buying_currency.service;
 
+import com.luxoft.buying_currency.model.Account;
 import com.luxoft.buying_currency.model.User;
 
 /**
@@ -9,4 +10,5 @@ import com.luxoft.buying_currency.model.User;
 public interface UserService {
     void addUser(User user);
     User getUser(String name);
+    void saveAccount(Account account);
 }

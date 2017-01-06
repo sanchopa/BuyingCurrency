@@ -1,6 +1,7 @@
-package com.luxoft.buying_currency.service.auth;
+package com.luxoft.buying_currency.service;
 
 import com.luxoft.buying_currency.dao.UserDao;
+import com.luxoft.buying_currency.model.Account;
 import com.luxoft.buying_currency.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,5 +24,11 @@ public class UserServiceImpl implements UserService {
 
     public User getUser(String name) {
         return dao.get(name);
+    }
+
+    @Override
+    @Transactional
+    public void saveAccount(Account account) {
+        dao.saveAccount(account);
     }
 }

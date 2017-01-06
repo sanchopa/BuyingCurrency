@@ -43,5 +43,5 @@
         <property name="jpaDialect" ref="jpaDialect"/>
     </bean>
 
-    <!--<bean id="authService" class="com.luxoft.buying_currency.service.auth.AuthService"></bean>-->
+    <!--<bean id="authService" class="AuthService"></bean>-->
 </beans>

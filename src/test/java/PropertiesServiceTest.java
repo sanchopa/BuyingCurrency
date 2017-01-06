@@ -9,10 +9,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class PropertiesServiceTest {
     private static final Logger log = Logger.getLogger(UserServiceTest.class);
+
     @Test
     public void testGetProperties() {
         ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/root-context.xml");
-        PropertiesService propServ  = (PropertiesService) context.getBean("propertiesService");
+        PropertiesService propServ = (PropertiesService) context.getBean("propertiesService");
         log.info(propServ.getDefaultBalanceRUB());
         log.info(propServ.getDefaultBalanceUSD());
         log.info(propServ.getDefaultBalanceEUR());

@@ -14,15 +14,15 @@ public class Account {
     @Id
     private long accountID;
     @Column
-    private String balanceRUB;
+    private double balanceRUB;
     @Column
-    private String balanceUSD;
+    private double balanceUSD;
     @Column
-    private String balanceEUR;
+    private double balanceEUR;
     @OneToOne
     private User user;
 
-    public Account(User user, String balanceRUB, String balanceUSD, String balanceEUR) {
+    public Account(User user, double balanceRUB, double balanceUSD, double balanceEUR) {
         this.user = user;
         this.balanceRUB = balanceRUB;
         this.balanceUSD = balanceUSD;
@@ -40,27 +40,27 @@ public class Account {
         this.user = user;
     }
 
-    public String getBalanceRUB() {
+    public double getBalanceRUB() {
         return balanceRUB;
     }
 
-    public void setBalanceRUB(String balanceRUB) {
+    public void setBalanceRUB(double balanceRUB) {
         this.balanceRUB = balanceRUB;
     }
 
-    public String getBalanceUSD() {
+    public double getBalanceUSD() {
         return balanceUSD;
     }
 
-    public void setBalanceUSD(String balanceUSD) {
+    public void setBalanceUSD(double balanceUSD) {
         this.balanceUSD = balanceUSD;
     }
 
-    public String getBalanceEUR() {
+    public double getBalanceEUR() {
         return balanceEUR;
     }
 
-    public void setBalanceEUR(String balanceEUR) {
+    public void setBalanceEUR(double balanceEUR) {
         this.balanceEUR = balanceEUR;
     }
 

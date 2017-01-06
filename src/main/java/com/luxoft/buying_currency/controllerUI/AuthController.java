@@ -1,9 +1,8 @@
 package com.luxoft.buying_currency.controllerUI;
 
-import com.luxoft.buying_currency.model.Account;
-import com.luxoft.buying_currency.model.Pair;
+import com.luxoft.buying_currency.model.User;
 import com.luxoft.buying_currency.service.PairService;
-import com.luxoft.buying_currency.service.auth.AuthService;
+import com.luxoft.buying_currency.service.AuthService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -11,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 /**
  * Класс-контроллер для обслуживания страницы авторизации auth.jsp
@@ -19,10 +19,10 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @autor Zavalny Alexander
  */
 @Controller
+@SessionAttributes(types = User.class)
 public class AuthController {
 //	@Autowired
 //	private AuthService authService;
-
 
     /**
      * Метод для отображения страницы авторизации
@@ -43,16 +43,17 @@ public class AuthController {
     public String authSubmit(@RequestParam String name, Model model) {
         ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/root-context.xml");
         AuthService authService = context.getBean(AuthService.class);
-        Account account = authService.auth(name);
+        User user = authService.auth(name);
+        model.addAttribute(user);
         model.addAttribute("name", name);
-        model.addAttribute("balanceRUB", account.getBalanceRUB());
-        model.addAttribute("balanceUSD", account.getBalanceUSD());
-        model.addAttribute("balanceEUR", account.getBalanceEUR());
+        model.addAttribute("balanceRUB", user.getAccount().getBalanceRUB());
+        model.addAttribute("balanceUSD", user.getAccount().getBalanceUSD());
+        model.addAttribute("balanceEUR", user.getAccount().getBalanceEUR());
 
         PairService pairService = context.getBean(PairService.class);
-        model.addAttribute("usdrub", pairService.getCoursePair("usdrub"));
-        model.addAttribute("usdeur", pairService.getCoursePair("usdeur"));
-        model.addAttribute("rubeur", pairService.getCoursePair("rubeur"));
+        model.addAttribute("usdrub", pairService.getPair("usdrub").getCourse());
+        model.addAttribute("eurrub", pairService.getPair("eurrub").getCourse());
+        model.addAttribute("eurusd", pairService.getPair("eurusd").getCourse());
         return "currency_exchange";
     }
 }

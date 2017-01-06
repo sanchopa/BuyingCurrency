@@ -1,15 +1,19 @@
 package com.luxoft.buying_currency.dao;
 
+import com.luxoft.buying_currency.model.Account;
 import com.luxoft.buying_currency.model.User;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
-/** Класс работы с таблице Users в базе данных
- * @autor Zavalny Alexander
+/**
+ * Класс работы с таблице Users в базе данных
+ *
  * @version 1.0
+ * @autor Zavalny Alexander
  */
 @Repository
 public class UserDaoImpl implements UserDao {
@@ -21,7 +25,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void add(User user) {
-            em.persist(user);
+        em.persist(user);
     }
 
     @Override
@@ -33,5 +37,10 @@ public class UserDaoImpl implements UserDao {
             newUser = null;
         }
         return newUser;
+    }
+
+    @Override
+    public void saveAccount(Account account) {
+        em.merge(account);
     }
 }

@@ -6,11 +6,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import com.luxoft.buying_currency.service.auth.UserService;
+import com.luxoft.buying_currency.service.UserService;
 
-/** Класс-тест для темтирования @see UserServiceImpl
- * @autor Zavalny Alexander
+/**
+ * Класс-тест для темтирования @see UserServiceImpl
+ *
  * @version 1.0
+ * @autor Zavalny Alexander
  */
 public class UserServiceTest extends Assert {
     private static final Logger log = Logger.getLogger(UserServiceTest.class);
@@ -22,7 +24,7 @@ public class UserServiceTest extends Assert {
     @Before
     public void dataPreparation() {
         user1 = new User(USER1_NAME);
-        Account account = new Account(user1,"000", "001", "002");
+        Account account = new Account(user1, 10, 20, 30);
         user1.setAccount(account);
         ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/root-context.xml");
         userService = (UserService) context.getBean("userService");
