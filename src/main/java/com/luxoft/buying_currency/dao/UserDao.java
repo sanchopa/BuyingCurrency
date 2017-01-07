@@ -22,5 +22,5 @@ public interface UserDao {
      */
     User get(String name);
 
-    void saveAccount (Account account);
+    void save(User user);
 }

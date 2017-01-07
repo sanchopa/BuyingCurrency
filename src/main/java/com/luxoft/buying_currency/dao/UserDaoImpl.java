@@ -40,7 +40,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void saveAccount(Account account) {
-        em.merge(account);
+    public void save(User user) {
+        em.merge(user);
     }
 }

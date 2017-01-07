@@ -10,5 +10,5 @@ import com.luxoft.buying_currency.model.User;
 public interface UserService {
     void addUser(User user);
     User getUser(String name);
-    void saveAccount(Account account);
+    void saveUser(User user);
 }

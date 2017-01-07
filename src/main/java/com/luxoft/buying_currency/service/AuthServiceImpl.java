@@ -1,9 +1,13 @@
 package com.luxoft.buying_currency.service;
 
 import com.luxoft.buying_currency.model.Account;
+import com.luxoft.buying_currency.model.History;
+import com.luxoft.buying_currency.model.Pair;
 import com.luxoft.buying_currency.model.User;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
 /**
@@ -31,8 +35,11 @@ public class AuthServiceImpl implements AuthService {
             Account account = new Account(newUser, propService.getDefaultBalanceRUB(),
                     propService.getDefaultBalanceUSD(), propService.getDefaultBalanceEUR());
             newUser.setAccount(account);
+            History history = new History(newUser);
+            newUser.setHistory(history);
             userService.addUser(newUser);
             log.info("Создан новый пользователь");
+
             return newUser;
         }
         return user;

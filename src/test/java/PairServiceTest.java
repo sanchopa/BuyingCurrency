@@ -25,9 +25,10 @@ public class PairServiceTest {
     }
 
     @Test
-    public void setGetCourse() {
+    public void getCourse() {
         ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/root-context.xml");
         PairService pairService = context.getBean(PairService.class);
+        log.info("Test the receiving rate USD/RUB from the database...");
         log.info(pairService.getPair("usdrub").getCourse());
     }
 }

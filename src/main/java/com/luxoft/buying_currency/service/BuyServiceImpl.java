@@ -21,37 +21,37 @@ public class BuyServiceImpl implements BuyService {
     public void buy(int currency1, int currency2, String sum, User user) {
         if (currency1 != currency2) {
             double dsum = Double.parseDouble(sum);
-            Account account = user.getAccount();
             if (currency1 == 1 && currency2 == 2) {
                 log.info("Есть такая пара USD/RUB");
-                buyUSDRUB(sum, dsum, account, false);
+                buyUSDRUB(sum, dsum, user, false);
             }
             if (currency1 == 3 && currency2 == 1) {
                 log.info("Есть такая пара EUR/USD");
-                buyEURUSD(sum, dsum, account, false);
+                buyEURUSD(sum, dsum, user, false);
             }
             if (currency1 == 3 && currency2 == 2) {
                 log.info("Есть такая пара EUR/RUB");
-                buyEURRUB(sum, dsum, account, false);
+                buyEURRUB(sum, dsum, user, false);
             }
             if (currency1 == 2 && currency2 == 1) {
                 log.info("Обратная пара от USD/RUB");
-                buyUSDRUB(sum, dsum, account, true);
+                buyUSDRUB(sum, dsum, user, true);
             }
             if (currency1 == 1 && currency2 == 3) {
                 log.info("Обратная пара от EUR/USD");
-                buyEURUSD(sum, dsum, account, true);
+                buyEURUSD(sum, dsum, user, true);
             }
             if (currency1 == 2 && currency2 == 3) {
                 log.info("Обратная пара от EUR/RUB");
-                buyEURRUB(sum, dsum, account, true);
+                buyEURRUB(sum, dsum, user, true);
             }
         } else {
             log.info("Выберите РАЗНУЮ валюту");
         }
     }
 
-    private void buyEURRUB(String sum, double dsum, Account account, boolean reverse) {
+    private void buyEURRUB(String sum, double dsum, User user, boolean reverse) {
+        Account account = user.getAccount();
         double cours = pairService.getPair("eurrub").getCourse();
         double amountSold;
         if(reverse) {
@@ -64,13 +64,15 @@ public class BuyServiceImpl implements BuyService {
         if (amountSold <= buyCurrency) {
             account.setBalanceEUR(sellCurrency + dsum);
             account.setBalanceRUB(buyCurrency - amountSold);
-            userService.saveAccount(account);
+            user.setAccount(account);
+            userService.saveUser(user);
         } else {
             log.info("Сумма " + sum + " больше баланса " + buyCurrency);
         }
     }
 
-    private void buyEURUSD(String sum, double dsum, Account account, boolean reverse) {
+    private void buyEURUSD(String sum, double dsum, User user, boolean reverse) {
+        Account account = user.getAccount();
         double cours = pairService.getPair("eurusd").getCourse();
         double amountSold;
         if(reverse) {
@@ -83,13 +85,15 @@ public class BuyServiceImpl implements BuyService {
         if (amountSold <= buyCurrency) {
             account.setBalanceEUR(sellCurrency + dsum);
             account.setBalanceUSD(buyCurrency - amountSold);
-            userService.saveAccount(account);
+            user.setAccount(account);
+            userService.saveUser(user);
         } else {
             log.info("Сумма " + sum + " больше баланса " + buyCurrency);
         }
     }
 
-    private void buyUSDRUB(String sum, double dsum, Account account, boolean reverse) {
+    private void buyUSDRUB(String sum, double dsum, User user, boolean reverse) {
+        Account account = user.getAccount();
         double cours = pairService.getPair("usdrub").getCourse();
         double amountSold;
         if(reverse) {
@@ -102,7 +106,8 @@ public class BuyServiceImpl implements BuyService {
         if (amountSold <= buyCurrency) {
             account.setBalanceUSD(sellCurrency + dsum);
             account.setBalanceRUB(buyCurrency - amountSold);
-            userService.saveAccount(account);
+            user.setAccount(account);
+            userService.saveUser(user);
         } else {
             log.info("Сумма " + sum + " больше баланса " + buyCurrency);
         }

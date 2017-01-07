@@ -15,9 +15,10 @@ public class User {
     private String name;
     @OneToOne(cascade = CascadeType.ALL)
     private Account account;
+    @OneToOne(cascade = CascadeType.ALL)
+    private History history;
 
     public User() {
-
     }
 
     public User(String name) {
@@ -46,5 +47,13 @@ public class User {
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    public History getHistory() {
+        return history;
+    }
+
+    public void setHistory(History history) {
+        this.history = history;
     }
 }

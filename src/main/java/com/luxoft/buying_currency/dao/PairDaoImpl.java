@@ -35,10 +35,5 @@ public class PairDaoImpl implements PairDao {
         }
         return newPair;
     }
-//
-//    @Override
-//    public String getCourse(String name) {
-//        return (String) em.createQuery("SELECT p.course FROM pair p WHERE p.name=:name").setParameter("name", name).getSingleResult();
-//    }
 }
 

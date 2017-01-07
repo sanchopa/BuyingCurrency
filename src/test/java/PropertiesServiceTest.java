@@ -14,6 +14,7 @@ public class PropertiesServiceTest {
     public void testGetProperties() {
         ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/root-context.xml");
         PropertiesService propServ = (PropertiesService) context.getBean("propertiesService");
+        log.info("Testing getting parameters from file...");
         log.info(propServ.getDefaultBalanceRUB());
         log.info(propServ.getDefaultBalanceUSD());
         log.info(propServ.getDefaultBalanceEUR());
