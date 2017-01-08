@@ -5,7 +5,7 @@ import javax.persistence.*;
 /**
  * Created by User on 07.01.2017.
  */
-@Entity(name="record")
+@Entity(name = "record")
 public class Record {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,6 +23,18 @@ public class Record {
     @ManyToOne
     @JoinColumn(name = "historyid")
     History history;
+
+    public Record(History history, String buy, double sumbuy, String sale, double sumsale, double course) {
+        this.history = history;
+        this.buy = buy;
+        this.sumbuy = sumbuy;
+        this.sale = sale;
+        this.sumsale = sumsale;
+        this.course = course;
+    }
+
+    public Record() {
+    }
 
     public History getHistory() {
         return history;
@@ -78,5 +90,14 @@ public class Record {
 
     public void setCourse(double course) {
         this.course = course;
+    }
+
+    @Override
+    public String toString() {
+        return "Buy " + buy +
+                " sum " + sumbuy +
+                " sale " + sale +
+                " sums " + sumsale +
+                " course " + course;
     }
 }

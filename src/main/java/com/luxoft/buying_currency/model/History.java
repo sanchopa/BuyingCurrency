@@ -2,7 +2,9 @@ package com.luxoft.buying_currency.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Alexandr Zavalnyi on 07.01.2017.
@@ -14,8 +16,9 @@ public class History {
     private long historyID;
     @OneToOne
     User user;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "history")
-    private List<Record> records = new ArrayList<Record>();
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "history", fetch = FetchType.EAGER, orphanRemoval = true)
+    private Set<Record> records;
 
     public History(User user) {
         this.user = user;
@@ -24,10 +27,6 @@ public class History {
     public History() {
     }
 
-    public History(User user, List<Record> records) {
-        this.user = user;
-        this.records = records;
-    }
 
     public long getHistoryID() {
         return historyID;
@@ -43,5 +42,13 @@ public class History {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Set<Record> getRecords() {
+        return records;
+    }
+
+    public void setRecords(Set<Record> records) {
+        this.records = records;
     }
 }

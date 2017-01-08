@@ -39,7 +39,6 @@ public class AuthServiceImpl implements AuthService {
             newUser.setHistory(history);
             userService.addUser(newUser);
             log.info("Создан новый пользователь");
-
             return newUser;
         }
         return user;

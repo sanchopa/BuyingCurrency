@@ -32,7 +32,7 @@
 <div class="block2">
 <div class="welcome">
     <form method="get" action="logout">
-        <label for="logout">${name}</label>
+        <label id="name" for="logout">${name}</label>
         <button id="logout">Logout</button>
     </form>
 
@@ -40,14 +40,14 @@
 <div class="buy">
     <h2>Buy currency</h2>
     <form action="buy" method="post">
-        <label for="currency1">Buy currency</label>
-        <p><select id="currency1" name="currency1">
+        <p><label for="currency1">Buy currency</label>
+        <select id="currency1" name="currency1">
             <option value=1>USD</option>
             <option value=2>RUB</option>
             <option value=3>EUR</option>
         </select></p>
-        <label for="currency2">for</label>
-        <p><select id="currency2" name="currency2">
+        <p><label for="currency2">for</label>
+        <select id="currency2" name="currency2">
             <option value=1>USD</option>
             <option value=2>RUB</option>
             <option value=3>EUR</option>

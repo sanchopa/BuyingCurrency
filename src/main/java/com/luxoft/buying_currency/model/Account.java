@@ -12,6 +12,7 @@ import javax.persistence.*;
 public class Account {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long accountID;
     @Column
     private double balanceRUB;
