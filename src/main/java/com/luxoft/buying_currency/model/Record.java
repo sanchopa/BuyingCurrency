@@ -1,6 +1,7 @@
 package com.luxoft.buying_currency.model;
 
 import javax.persistence.*;
+import java.text.DecimalFormat;
 
 /**
  * Created by User on 07.01.2017.
@@ -95,9 +96,11 @@ public class Record {
     @Override
     public String toString() {
         return "Buy " + buy +
-                " sum " + sumbuy +
+                " sum " + new DecimalFormat("#0.00").format(sumbuy) +
                 " sale " + sale +
-                " sums " + sumsale +
-                " course " + course;
+                " sum " + new DecimalFormat("#0.00").format( sumsale) +
+                " course " + new DecimalFormat("#0.00").format(course);
     }
+
+
 }

@@ -17,4 +17,6 @@ public interface PairDao {
      * @return Возвращает объект User
      */
     Pair get(String name);
+
+    void save(Pair pair);
 }

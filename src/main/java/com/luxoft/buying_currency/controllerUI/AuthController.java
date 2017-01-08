@@ -53,6 +53,11 @@ public class AuthController {
         model.addAttribute("balanceEUR", user.getAccount().getBalanceEUR());
 
         PairService pairService = context.getBean(PairService.class);
+
+        pairService.generateRandomCursePair("usdrub");
+        pairService.generateRandomCursePair("eurrub");
+        pairService.generateRandomCursePair("eurusd");
+
         model.addAttribute("usdrub", pairService.getPair("usdrub").getCourse());
         model.addAttribute("eurrub", pairService.getPair("eurrub").getCourse());
         model.addAttribute("eurusd", pairService.getPair("eurusd").getCourse());

@@ -35,5 +35,10 @@ public class PairDaoImpl implements PairDao {
         }
         return newPair;
     }
+
+    @Override
+    public void save(Pair pair) {
+        em.merge(pair);
+    }
 }
 

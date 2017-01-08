@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Random;
+
 
 /**
  * Created by User on 03.01.2017.
@@ -27,12 +29,29 @@ public class PairServiceImpl implements PairService {
         return dao.get(name);
     }
 
-//    private static final int MIN_COURSE = 1;
-//    private static final int MAX_COURSE = 200;
-//    private static final int DEVIATION = 60;
-//
-//    private double newCourse() {
-//        Random rnd = new Random(System.currentTimeMillis());
-//        return MIN_COURSE + rnd.nextInt(MAX_COURSE - MIN_COURSE + 1);
-//    }
+    public double generateRandomDecimal() {
+        int rnd = new Random(System.currentTimeMillis()).nextInt(5000 - 100) + 100;
+        return rnd / 100;
+    }
+
+    @Override
+    @Transactional
+    public void generateRandomCursePair(String namePair) {
+        Random random = new Random(System.currentTimeMillis());
+        double course = (random.nextInt(5000 - 100) + 100) / 100;
+
+        Pair isPair = getPair(namePair);
+        if (isPair == null) {
+            addPair(new Pair(namePair, course));
+        } else {
+            isPair.setCourse(course);
+            savePair(isPair);
+        }
+    }
+
+    @Override
+    @Transactional
+    public void savePair(Pair pair) {
+        dao.save(pair);
+    }
 }

@@ -9,4 +9,10 @@ public interface PairService {
     void addPair(Pair pair);
 
     Pair getPair(String name);
+
+    double generateRandomDecimal();
+
+    void generateRandomCursePair(String namePair);
+
+    void savePair(Pair pair);
 }

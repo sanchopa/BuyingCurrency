@@ -14,6 +14,7 @@ import java.util.Set;
  */
 
 @Service("historyService")
+@Transactional
 public class HistoryServiceImpl implements HistoryService {
     private static final Logger log = Logger.getLogger(HistoryServiceImpl.class);
 
@@ -26,6 +27,7 @@ public class HistoryServiceImpl implements HistoryService {
     }
 
     @Override
+    @Transactional
     public String getHistory(History history) {
         StringBuilder historystr = new StringBuilder("  ");
         Set<Record> records = history.getRecords();
