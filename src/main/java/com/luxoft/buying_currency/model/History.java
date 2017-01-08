@@ -1,10 +1,7 @@
 package com.luxoft.buying_currency.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Alexandr Zavalnyi on 07.01.2017.
@@ -16,9 +13,8 @@ public class History {
     private long historyID;
     @OneToOne
     User user;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "history", fetch = FetchType.EAGER, orphanRemoval = true)
-    private Set<Record> records;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "history", fetch = FetchType.LAZY, orphanRemoval = true)
+    private Set<Record> records = new LinkedHashSet<Record>();
 
     public History(User user) {
         this.user = user;

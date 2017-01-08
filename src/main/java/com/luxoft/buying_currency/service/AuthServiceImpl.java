@@ -1,9 +1,6 @@
 package com.luxoft.buying_currency.service;
 
-import com.luxoft.buying_currency.model.Account;
-import com.luxoft.buying_currency.model.History;
-import com.luxoft.buying_currency.model.Pair;
-import com.luxoft.buying_currency.model.User;
+import com.luxoft.buying_currency.model.*;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;

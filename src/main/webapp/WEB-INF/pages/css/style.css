@@ -25,3 +25,9 @@ body {
   width:300px;
   float: left;
 }
+.history {
+  box-sizing: border-box;
+  padding: 20px;
+  width:600px;
+  float: left;
+}

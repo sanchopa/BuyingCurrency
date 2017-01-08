@@ -2,6 +2,7 @@ package com.luxoft.buying_currency.controllerUI;
 
 import com.luxoft.buying_currency.model.User;
 import com.luxoft.buying_currency.service.BuyService;
+import com.luxoft.buying_currency.service.HistoryService;
 import com.luxoft.buying_currency.service.PairService;
 import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
@@ -49,6 +50,9 @@ public class CurrencyExchangeController {
         model.addAttribute("usdrub", pairService.getPair("usdrub").getCourse());
         model.addAttribute("eurrub", pairService.getPair("eurrub").getCourse());
         model.addAttribute("eurusd", pairService.getPair("eurusd").getCourse());
+
+        HistoryService historyService = context.getBean(HistoryService.class);
+        model.addAttribute("history",  historyService.getHistory(user.getHistory()));
 
         return "currency_exchange";
     }

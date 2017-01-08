@@ -25,9 +25,6 @@
         <p>EUR/RUB: ${eurrub}</p>
         <p>EUR/USD: ${eurusd}</p>
     </div>
-    <div class="history">
-        <h2>History operation</h2>
-    </div>
 </div>
 <div class="block2">
 <div class="welcome">
@@ -57,6 +54,10 @@
         <p><input type="submit" value="Buy"></p>
     </form>
 </div>
+</div>
+<div class="history">
+    <h2>History operation</h2>
+    <p>${history}</p>
 </div>
 </body>
 </html>

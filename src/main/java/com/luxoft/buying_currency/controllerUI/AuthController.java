@@ -1,6 +1,8 @@
 package com.luxoft.buying_currency.controllerUI;
 
+import com.luxoft.buying_currency.model.History;
 import com.luxoft.buying_currency.model.User;
+import com.luxoft.buying_currency.service.HistoryService;
 import com.luxoft.buying_currency.service.PairService;
 import com.luxoft.buying_currency.service.AuthService;
 import org.springframework.context.ApplicationContext;
@@ -54,6 +56,10 @@ public class AuthController {
         model.addAttribute("usdrub", pairService.getPair("usdrub").getCourse());
         model.addAttribute("eurrub", pairService.getPair("eurrub").getCourse());
         model.addAttribute("eurusd", pairService.getPair("eurusd").getCourse());
+
+        HistoryService historyService = context.getBean(HistoryService.class);
+        History history = user.getHistory();
+        model.addAttribute("history",  historyService.getHistory(history));
         return "currency_exchange";
     }
 }

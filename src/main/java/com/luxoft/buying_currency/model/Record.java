@@ -21,7 +21,7 @@ public class Record {
     @Column
     double course;
     @ManyToOne
-    @JoinColumn(name = "historyid")
+    @JoinColumn(name = "historyid", nullable=false)
     History history;
 
     public Record(History history, String buy, double sumbuy, String sale, double sumsale, double course) {
