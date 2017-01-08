@@ -18,6 +18,7 @@ public class HistoryServiceImpl implements HistoryService {
     @Transactional
     public void saveHistory(History history, String buy, double sumbuy, String sale, double sumsale, double course) {
         Record record = new Record(history, buy, sumbuy, sale, sumsale, course);
+        history.getRecords().clear();
         history.getRecords().add(record);
     }
 
