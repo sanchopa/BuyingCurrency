@@ -5,11 +5,13 @@ import com.luxoft.buying_currency.model.User;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by Alexandr Zavalnyi on 04.01.2017.
  */
 @Service("buyService")
+@Transactional
 public class BuyServiceImpl implements BuyService {
     private static final Logger log = Logger.getLogger(BuyServiceImpl.class);
     @Autowired
@@ -20,30 +22,30 @@ public class BuyServiceImpl implements BuyService {
     HistoryService historyService;
 
     @Override
-    public void buy(int currency1, int currency2, String sum, User user) {
+    public void buy(String currency1, String currency2, String sum, User user) {
         if (currency1 != currency2) {
             double dsum = Double.parseDouble(sum);
-            if (currency1 == 1 && currency2 == 2) {
+            if (currency1.equals("USD") && currency2.equals("RUB")) {
                 log.info("Есть такая пара USD/RUB");
                 buyUSDRUB(sum, dsum, user);
             }
-            if (currency1 == 3 && currency2 == 1) {
+            if (currency1.equals("EUR") && currency2.equals("USD")) {
                 log.info("Есть такая пара EUR/USD");
                 buyEURUSD(sum, dsum, user);
             }
-            if (currency1 == 3 && currency2 == 2) {
+            if (currency1.equals("EUR") && currency2.equals("RUB")) {
                 log.info("Есть такая пара EUR/RUB");
                 buyEURRUB(sum, dsum, user);
             }
-            if (currency1 == 2 && currency2 == 1) {
+            if (currency1.equals("RUB") && currency2.equals("USD")) {
                 log.info("Обратная пара от USD/RUB");
                 buyRUBUSD(sum, dsum, user);
             }
-            if (currency1 == 1 && currency2 == 3) {
+            if (currency1.equals("USD") && currency2.equals("EUR")) {
                 log.info("Обратная пара от EUR/USD");
                 buyUSDEUR(sum, dsum, user);
             }
-            if (currency1 == 2 && currency2 == 3) {
+            if (currency1.equals("RUB") && currency2.equals("EUR")) {
                 log.info("Обратная пара от EUR/RUB");
                 buyRUBEUR(sum, dsum, user);
             }
@@ -119,6 +121,7 @@ public class BuyServiceImpl implements BuyService {
             log.info("Сумма " + sum + " больше баланса " + buyCurrency);
         }
     }
+
 
     private void buyEURRUB(String sum, double dsum, User user) {
         Account account = user.getAccount();

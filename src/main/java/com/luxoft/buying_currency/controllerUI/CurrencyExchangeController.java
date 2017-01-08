@@ -34,7 +34,7 @@ public class CurrencyExchangeController {
     }
 
     @RequestMapping(value = "buy", method = RequestMethod.POST)
-    public String buy(@RequestParam int currency1, int currency2, String sum, Model model, User user) {
+    public String buy(@RequestParam String currency1, String currency2, String sum, Model model, User user) {
         log.info("buy");
         ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/root-context.xml");
         BuyService buyService = context.getBean(BuyService.class);
