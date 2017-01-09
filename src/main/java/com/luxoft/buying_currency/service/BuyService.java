@@ -6,5 +6,5 @@ import com.luxoft.buying_currency.model.User;
  * Created by User on 04.01.2017.
  */
 public interface BuyService {
-    void buy(String currency1, String currency2, String sum, User user);
+    String buy(String currency1, String currency2, String sum, User user);
 }

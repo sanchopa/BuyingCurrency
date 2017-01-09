@@ -39,19 +39,20 @@
     <form action="buy" method="post">
         <p><label for="currency1">Buy currency</label>
         <select id="currency1" name="currency1">
-            <option value="USD">USD</option>
-            <option value="RUB">RUB</option>
-            <option value="EUR">EUR</option>
+            <option value="usd">USD</option>
+            <option value="rub">RUB</option>
+            <option value="eur">EUR</option>
         </select></p>
         <p><label for="currency2">for</label>
         <select id="currency2" name="currency2">
-            <option value="USD">USD</option>
-            <option value="RUB">RUB</option>
-            <option value="EUR">EUR</option>
+            <option value="usd">USD</option>
+            <option value="rub">RUB</option>
+            <option value="eur">EUR</option>
         </select></p>
         <label for="sum">Sum:</label>
         <input type="text" name="sum" id="sum" value="0">
-        <p><input type="submit" value="Buy"></p>
+        <p><input type="submit" value="Buy">${info}</p>
+
     </form>
 </div>
 </div>

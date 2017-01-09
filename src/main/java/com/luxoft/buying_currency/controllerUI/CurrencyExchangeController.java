@@ -38,7 +38,7 @@ public class CurrencyExchangeController {
         log.info("buy");
         ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/root-context.xml");
         BuyService buyService = context.getBean(BuyService.class);
-        buyService.buy(currency1, currency2, sum, user);
+        model.addAttribute("info", buyService.buy(currency1, currency2, sum, user));
 
         //model.addAttribute(user);
         model.addAttribute("name", user.getName());
