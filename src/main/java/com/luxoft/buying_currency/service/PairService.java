@@ -15,4 +15,6 @@ public interface PairService {
     void generateRandomCursePair(String namePair);
 
     void savePair(Pair pair);
+
+    void generateRandomPair(int millisecond);
 }

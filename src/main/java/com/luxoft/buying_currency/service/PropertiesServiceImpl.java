@@ -38,4 +38,6 @@ public class PropertiesServiceImpl implements PropertiesService {
     public double getDefaultBalanceEUR() {
         return Double.parseDouble(getProperties().getProperty("MMM3"));
     }
+
+    public int getDelay() {return Integer.parseInt(getProperties().getProperty("XXX"));}
 }

@@ -5,6 +5,7 @@ import com.luxoft.buying_currency.model.User;
 import com.luxoft.buying_currency.service.HistoryService;
 import com.luxoft.buying_currency.service.PairService;
 import com.luxoft.buying_currency.service.AuthService;
+import com.luxoft.buying_currency.service.PropertiesService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -54,9 +55,8 @@ public class AuthController {
 
         PairService pairService = context.getBean(PairService.class);
 
-        pairService.generateRandomCursePair("usdrub");
-        pairService.generateRandomCursePair("eurrub");
-        pairService.generateRandomCursePair("eurusd");
+        PropertiesService propertiesService = context.getBean(PropertiesService.class);
+        pairService.generateRandomPair(propertiesService.getDelay());
 
         model.addAttribute("usdrub", pairService.getPair("usdrub").getCourse());
         model.addAttribute("eurrub", pairService.getPair("eurrub").getCourse());

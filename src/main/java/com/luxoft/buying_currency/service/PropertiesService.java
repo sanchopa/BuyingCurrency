@@ -9,4 +9,6 @@ public interface PropertiesService {
     double getDefaultBalanceUSD();
 
     double getDefaultBalanceEUR();
+
+    int getDelay();
 }
